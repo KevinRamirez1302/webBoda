@@ -4,21 +4,22 @@ import EventDetails from "./views/detalles";
 import RSVP from "./views/confirmacion";
 import Countdown from "./views/countDown";
 import {AperturaInvitacion} from "./components/aperturaCarta";
+import FloatingHearts from "./components/floatingHeart";
 
 
 export default function Home() {
   return (
- <>
- <AperturaInvitacion>
-  <HeroSection/>
- <LoveStory/>
- <EventDetails/>
- <Countdown/>
- <RSVP/>
- </AperturaInvitacion>
- 
- 
- 
- </>
+    <div className="relative w-full overflow-x-hidden">
+      <FloatingHearts />
+      <AperturaInvitacion>
+        <div className="flex flex-col min-h-screen">
+          <HeroSection/>
+          <LoveStory/>
+          <EventDetails/>
+          <Countdown/>
+          <RSVP/>
+        </div>
+      </AperturaInvitacion>
+    </div>
   );
 }

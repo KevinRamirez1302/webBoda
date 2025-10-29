@@ -1,17 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-neutral-50 to-white overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-[#722f37] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#722f37] rounded-full blur-3xl"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Imagen de fondo */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/boda.jpg"
+          alt="Fondo de boda"
+          fill
+          priority
+          className="object-cover brightness-75"
+          sizes="100vw"
+        />
       </div>
+      {/* Overlay gradiente para mejor legibilidad */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/50 z-1"></div>
+    
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-[2] text-center px-4 max-w-4xl mx-auto">
         {/* Animated ornament top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -37,11 +47,11 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mb-8"
         >
-          <h1 className="font-serif text-6xl md:text-8xl text-[#722f37] mb-4">
+          <h1 className="font-serif text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold">
             Sofia & Carlos
           </h1>
-          <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-neutral-600">
-            <span className="font-light">Nos casamos</span>
+          <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-white">
+            <span className="font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Nos casamos</span>
           </div>
         </motion.div>
 
@@ -52,7 +62,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mb-8"
         >
-          <p className="text-xl md:text-2xl text-neutral-700 font-light">
+          <p className="text-xl md:text-2xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider">
             15 de Junio, 2025
           </p>
         </motion.div>

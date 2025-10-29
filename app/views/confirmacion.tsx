@@ -91,8 +91,7 @@ export default function RSVP() {
               >
                 <option value="1">1 persona</option>
                 <option value="2">2 personas</option>
-                <option value="3">3 personas</option>
-                <option value="4">4 personas</option>
+            
               </select>
             </div>
 
