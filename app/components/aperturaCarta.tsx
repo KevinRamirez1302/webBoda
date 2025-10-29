@@ -292,14 +292,37 @@ export const AperturaInvitacion = ({
                      boxShadow: 'inset 0 10px 30px rgba(0,0,0,0.15)',
                    }}></div>
 
-              {/* Texto decorativo */}
-              <div className="absolute inset-0 flex items-center justify-center z-15 pointer-events-none">
-                <div className="text-[#E5DDC9] text-center px-8">
-                  <p className="text-sm md:text-base font-serif opacity-80 tracking-widest">
-                    Toca para abrir
+              {/* Texto decorativo animado */}
+              <motion.div 
+                className="absolute bottom-[-80px] left-0 right-0 flex flex-col items-center justify-center z-15 pointer-events-none"
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                  y: [-2, 2, -2]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="text-[#E5DDC9] text-center">
+                  <p className="text-lg md:text-xl font-serif tracking-widest mb-2">
+                    Click para abrir
                   </p>
+                  <motion.div
+                    animate={{
+                      y: [0, 4, 0]
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    ↑
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
