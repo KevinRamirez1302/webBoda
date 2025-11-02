@@ -5,6 +5,7 @@ import RSVP from "./views/confirmacion";
 import Countdown from "./views/countDown";
 import {AperturaInvitacion} from "./components/aperturaCarta";
 import FloatingHearts from "./components/floatingHeart";
+import GiftSection from "./views/gift";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
           <EventDetails/>
           <LoveStory/>
           <RSVP/>
+          <GiftSection/>
         </div>
       </AperturaInvitacion>
     </div>
