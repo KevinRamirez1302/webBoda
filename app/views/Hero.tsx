@@ -48,7 +48,7 @@ export default function HeroSection() {
           className="mb-8"
         >
           <h1 className="font-serif text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold">
-            Sofia & Carlos
+            Gonzalo & Xiomara
           </h1>
           <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-white">
             <span className="font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Nos casamos</span>
@@ -63,7 +63,7 @@ export default function HeroSection() {
           className="mb-8"
         >
           <p className="text-xl md:text-2xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider">
-            15 de Junio, 2025
+            10 de Enero, 2026
           </p>
         </motion.div>
 

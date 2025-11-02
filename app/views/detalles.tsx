@@ -11,27 +11,23 @@ export default function EventDetails() {
   const events = [
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
+      <img src="images/iglesia.webp" className=' min-h-[150px] w-[150px] h-[150px] min-w-[150px] '/>
       ),
       title: "Ceremonia Religiosa",
       time: "16:00 hrs",
       location: "Iglesia San Francisco",
-      address: "Calle Principal 123, Ciudad",
+      address: "Av. 16 de Julio #1853, El Prado",
       mapsLink: "https://maps.google.com"
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-        </svg>
+       <img src="images/bodaRecepcion.webp" className=' min-h-[150px] w-[150px] h-[150px] min-w-[150px] '/>
       ),
       title: "Recepción",
       time: "18:00 hrs",
-      location: "Salón Jardín del Sol",
-      address: "Avenida de las Rosas 456, Ciudad",
-      mapsLink: "https://maps.google.com"
+      location: "Castillo salon Eventos",
+      address: "Claudio pinilla,ESQ Arturo posnaski #1011 Zona Miraflores",
+      mapsLink: "https://maps.app.goo.gl/3GoPQT98iSqGWwT47"
     }
   ];
 

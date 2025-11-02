@@ -9,7 +9,7 @@ export default function Countdown() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
   // Set your wedding date here (year, month-1, day, hour, minute)
-  const weddingDate = new Date(2025, 5, 15, 16, 0, 0).getTime();
+ const weddingDate = new Date(2026, 1, 10, 14, 0, 0).getTime();
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
