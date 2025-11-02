@@ -2,6 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Monsieur_La_Doulaise } from 'next/font/google';
+const monsieur = Monsieur_La_Doulaise({
+  subsets: ['latin'],
+  weight: '400',
+});
 
 export default function HeroSection() {
   return (
@@ -47,7 +52,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mb-8"
         >
-          <h1 className="font-serif text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold">
+          <h1 className={`${monsieur.className} text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold`}>
             Gonzalo & Xiomara
           </h1>
           <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-white">

@@ -10,26 +10,110 @@ export default function RSVP() {
   
   const [formData, setFormData] = useState({
     name: '',
-    guests: '1',
-    attending: '',
+    numberGuests: '1',
+    asiste: '',
     message: ''
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({
+    name: '',
+    asiste: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      asiste: ''
+    };
+
+    let isValid = true;
+
+    // Validar nombre
+    if (!formData.name.trim()) {
+      newErrors.name = 'El nombre es obligatorio';
+      isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'El nombre debe tener al menos 2 caracteres';
+      isValid = false;
+    }
+
+    // Validar asistencia
+    if (!formData.asiste) {
+      newErrors.asiste = 'Por favor selecciona una opción';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar los datos (API, email, etc.)
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    
+    // Validar antes de enviar
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://backend-boda-seven.vercel.app/create/guests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al enviar la confirmación');
+      }
+
+      const data = await response.json();
+      console.log('Response:', data);
+      
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        numberGuests: '1',
+        asiste: '',
+        message: ''
+      });
+      setErrors({
+        name: '',
+        asiste: ''
+      });
+      
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al enviar el formulario');
+      console.error('Error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+
+    // Limpiar error del campo cuando el usuario empieza a escribir
+    if (name === 'name' || name === 'asiste') {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   return (
@@ -68,30 +152,32 @@ export default function RSVP() {
                 type="text"
                 id="name"
                 name="name"
-                required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#722f37] focus:border-transparent transition-all"
+                className={`w-full px-4 py-3 rounded-lg border ${
+                  errors.name ? 'border-red-500 focus:ring-red-500' : 'border-neutral-200 focus:ring-[#722f37]'
+                } focus:outline-none focus:ring-2 focus:border-transparent transition-all`}
                 placeholder="Tu nombre"
               />
+              {errors.name && (
+                <p className="mt-2 text-sm text-red-600">{errors.name}</p>
+              )}
             </div>
 
             {/* Number of guests */}
             <div>
-              <label htmlFor="guests" className="block text-neutral-700 font-medium mb-2">
+              <label htmlFor="numberGuests" className="block text-neutral-700 font-medium mb-2">
                 Número de invitados *
               </label>
               <select
-                id="guests"
-                name="guests"
-                required
-                value={formData.guests}
+                id="numberGuests"
+                name="numberGuests"
+                value={formData.numberGuests}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#722f37] focus:border-transparent transition-all"
               >
                 <option value="1">1 persona</option>
                 <option value="2">2 personas</option>
-            
               </select>
             </div>
 
@@ -104,9 +190,9 @@ export default function RSVP() {
                 <label className="flex items-center cursor-pointer">
                   <input
                     type="radio"
-                    name="attending"
+                    name="asiste"
                     value="yes"
-                    required
+                    checked={formData.asiste === 'yes'}
                     onChange={handleChange}
                     className="w-5 h-5 text-[#722f37] focus:ring-[#722f37] cursor-pointer"
                   />
@@ -115,15 +201,18 @@ export default function RSVP() {
                 <label className="flex items-center cursor-pointer">
                   <input
                     type="radio"
-                    name="attending"
+                    name="asiste"
                     value="no"
-                    required
+                    checked={formData.asiste === 'no'}
                     onChange={handleChange}
                     className="w-5 h-5 text-[#722f37] focus:ring-[#722f37] cursor-pointer"
                   />
                   <span className="ml-2 text-neutral-700">No podré asistir</span>
                 </label>
               </div>
+              {errors.asiste && (
+                <p className="mt-2 text-sm text-red-600">{errors.asiste}</p>
+              )}
             </div>
 
             {/* Message */}
@@ -142,12 +231,24 @@ export default function RSVP() {
               />
             </div>
 
+            {/* Error message */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center text-red-600 font-medium bg-red-50 py-3 px-4 rounded-lg"
+              >
+                {error}
+              </motion.div>
+            )}
+
             {/* Submit button */}
             <button
               type="submit"
-              className="w-full bg-[#722f37] hover:bg-[#5a252c] text-white py-4 px-6 rounded-full transition-colors duration-300 font-medium text-lg shadow-lg hover:shadow-xl"
+              disabled={isLoading}
+              className="w-full bg-[#722f37] hover:bg-[#5a252c] text-white py-4 px-6 rounded-full transition-colors duration-300 font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Confirmar Asistencia
+              {isLoading ? 'Enviando...' : 'Confirmar Asistencia'}
             </button>
 
             {/* Success message */}
@@ -155,7 +256,7 @@ export default function RSVP() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center text-[#722f37] font-medium"
+                className="text-center text-[#722f37] font-medium bg-green-50 py-3 px-4 rounded-lg"
               >
                 ¡Gracias por confirmar! 💕
               </motion.div>

@@ -14,9 +14,9 @@ export default function Home() {
       <AperturaInvitacion>
         <div className="flex flex-col min-h-screen">
           <HeroSection/>
-          <LoveStory/>
-          <EventDetails/>
           <Countdown/>
+          <EventDetails/>
+          <LoveStory/>
           <RSVP/>
         </div>
       </AperturaInvitacion>
