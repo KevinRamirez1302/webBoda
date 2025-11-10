@@ -140,7 +140,7 @@ export default function RSVP() {
           </h2>
           <div className="w-24 h-0.5 bg-[#722f37] mx-auto mb-6"></div>
           <p className="text-lg text-neutral-600">
-            Por favor, confirma tu asistencia antes del 1 de Mayo
+            Por favor, confirma tu asistencia antes del 30 de Noviembre
           </p>
         </motion.div>
 
@@ -240,7 +240,7 @@ export default function RSVP() {
                 htmlFor="message"
                 className="block text-neutral-700 font-medium mb-2"
               >
-                Mensaje (opcional)
+                Mensaje de buenos deseos (opcional)
               </label>
               <textarea
                 id="message"

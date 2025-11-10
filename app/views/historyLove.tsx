@@ -17,19 +17,29 @@ export default function LoveStory() {
     },
     {
       year: '16:50 PM',
-      title: 'Boda civil',
-      description: 'Celebracion de nuestra boda civil en el salon de eventos.',
+      title: 'Boda Civil',
+      description: 'Celebración de nuestra Boda Civil en el salon de eventos.',
     },
     {
       year: '17:30 PM',
-      title: 'Vals de los novios',
-      description: 'Baile de los novios,padres y padrinos.',
+      title: 'Vals',
+      description: 'Baile de novios, padres y padrinos.',
     },
     {
       year: '19:30 PM',
       title: 'Cena',
       description:
         'Disfruta de un elegante menú especialmente preparado para la ocasión.',
+    },
+    {
+      year: '22:00 PM',
+      title: 'Torta',
+      description: 'Partida y repartición de torta.',
+    },
+    {
+      year: '19:30 PM',
+      title: 'Despedida de la Feliz Pareja',
+      description: '',
     },
   ];
 

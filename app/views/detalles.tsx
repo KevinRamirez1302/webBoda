@@ -18,8 +18,8 @@ export default function EventDetails() {
         />
       ),
       title: 'Iglesia Basílica María Auxiliadora',
-      time: '16:00 hrs',
-      location: 'Iglesia San Francisco',
+      time: '13:45 hrs',
+      location: 'Iglesia Basílica María Auxiliadora',
       address: 'Av. 16 de Julio #1853, El Prado',
       mapsLink:
         'https://www.google.com/maps/place/Basilica+Maria+Auxiliadora,+Tiahuanaco,+La+Paz,+Bolivia/@-16.503169,-68.1337517,17z/data=!3m1!4b1!4m6!3m5!1s0x915f207ab49fe44d:0xc73ee91aafb90db!8m2!3d-16.5032057!4d-68.1311709!16s%2Fg%2F11bbvp2h86?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D',
@@ -32,9 +32,9 @@ export default function EventDetails() {
         />
       ),
       title: 'Recepción',
-      time: '18:00 hrs',
-      location: 'Castillo salon Eventos',
-      address: 'Claudio pinilla,ESQ Arturo posnaski #1011 Zona Miraflores',
+      time: '16:50 hrs',
+      location: 'Salón de eventos “Castrillo”',
+      address: 'Claudio Pinilla, Esq. Arturo Posnaski #1011, Zona Miraflores',
       mapsLink: 'https://maps.app.goo.gl/3GoPQT98iSqGWwT47',
     },
   ];

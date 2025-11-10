@@ -14,7 +14,7 @@ export default function HeroSection() {
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/boda.jpg"
+          src="/images/hero.jpg"
           alt="Fondo de boda"
           fill
           priority
@@ -24,7 +24,6 @@ export default function HeroSection() {
       </div>
       {/* Overlay gradiente para mejor legibilidad */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/50 z-1"></div>
-    
 
       <div className="relative z-[2] text-center px-4 max-w-4xl mx-auto">
         {/* Animated ornament top */}
@@ -52,11 +51,15 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mb-8"
         >
-          <h1 className={`${monsieur.className} text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold`}>
+          <h1
+            className={`${monsieur.className} text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold`}
+          >
             Gonzalo & Xiomara
           </h1>
           <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-white">
-            <span className="font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Nos casamos</span>
+            <span className="font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+              Nos casamos
+            </span>
           </div>
         </motion.div>
 
@@ -94,7 +97,12 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: 'reverse' }}
+          transition={{
+            duration: 1,
+            delay: 1.2,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <div className="w-6 h-10 border-2 border-[#722f37] rounded-full flex items-start justify-center p-2">

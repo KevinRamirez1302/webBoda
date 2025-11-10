@@ -11,7 +11,7 @@ export default function Bendicion() {
   return (
     <section
       ref={ref}
-      className="py-16 sm:py-20 md:py-24 px-4 relative overflow-hidden bg-gradient-to-br from-[#F5F1E8] via-[#EDE7D9] to-[#E5DDC9]"
+      className="py-16 sm:py-20 md:py-24 px-4 relative overflow-hidden text-white bg-[#722f37]"
     >
       {/* Decorative elements - Gold sparkles */}
       <div className="absolute top-10 right-10 w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 animate-pulse"></div>
@@ -42,7 +42,7 @@ export default function Bendicion() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 sm:p-12 md:p-16 border border-[#D4AF37]/20 relative"
+          className="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 md:p-16 border border-[#D4AF37]/20 relative"
         >
           {/* Decorative corner accents */}
           <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#722f37] opacity-30 rounded-tl-2xl"></div>
