@@ -14,32 +14,38 @@ export default function LoveStory() {
       year: '13:45 PM',
       title: 'Ceremonia Religiosa',
       description: 'Celebración de nuestra unión en matrimonio en la iglesia.',
+      imageUrl: '/images/church.png',
     },
     {
       year: '16:50 PM',
       title: 'Boda Civil',
       description: 'Celebración de nuestra Boda Civil en el salon de eventos.',
+      imageUrl: '/images/anillo.png',
     },
     {
       year: '17:30 PM',
       title: 'Vals',
       description: 'Baile de novios, padres y padrinos.',
+      imageUrl: '/images/baile.png',
     },
     {
       year: '19:30 PM',
       title: 'Cena',
       description:
         'Disfruta de un elegante menú especialmente preparado para la ocasión.',
+      imageUrl: '/images/cena.png',
     },
     {
       year: '22:00 PM',
       title: 'Torta',
       description: 'Partida y repartición de torta.',
+      imageUrl: '/images/cake.png',
     },
     {
       year: '19:30 PM',
       title: 'Despedida de la Feliz Pareja',
       description: '',
+      imageUrl: '/images/adios.png',
     },
   ];
 
@@ -101,6 +107,14 @@ export default function LoveStory() {
                 }`}
               >
                 <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-neutral-100 sm:inline-block w-full sm:w-auto backdrop-blur-sm">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 relative">
+                    <Image
+                      src={event.imageUrl}
+                      alt={event.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   <span className="text-[#722f37] font-semibold text-base sm:text-lg block">
                     {event.year}
                   </span>

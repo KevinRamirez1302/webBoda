@@ -2,7 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Monsieur_La_Doulaise } from 'next/font/google';
+import { Monsieur_La_Doulaise, Satisfy } from 'next/font/google';
+
+const satisfy = Satisfy({
+  subsets: ['latin'],
+  weight: '400',
+});
+
 const monsieur = Monsieur_La_Doulaise({
   subsets: ['latin'],
   weight: '400',
@@ -18,14 +24,15 @@ export default function HeroSection() {
           alt="Fondo de boda"
           fill
           priority
-          className="object-cover brightness-75"
+          className="object-cover"
           sizes="100vw"
         />
       </div>
-      {/* Overlay gradiente para mejor legibilidad */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/50 z-1"></div>
 
-      <div className="relative z-[2] text-center px-4 max-w-4xl mx-auto">
+      {/* Overlay oscuro para resaltar el texto */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50 z-10"></div>
+
+      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
         {/* Animated ornament top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -56,9 +63,11 @@ export default function HeroSection() {
           >
             Gonzalo & Xiomara
           </h1>
-          <div className="flex items-center justify-center gap-4 text-2xl md:text-3xl text-white">
-            <span className="font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-              Nos casamos
+          <div className="flex items-center justify-center gap-4 text-3xl md:text-6xl text-white">
+            <span
+              className={`${satisfy.className} font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]`}
+            >
+              ¡Nos casamos!
             </span>
           </div>
         </motion.div>
@@ -70,7 +79,9 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="mb-8"
         >
-          <p className="text-xl md:text-2xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider">
+          <p
+            className={` ${satisfy.className} text-2xl md:text-3xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider`}
+          >
             10 de Enero, 2026
           </p>
         </motion.div>
