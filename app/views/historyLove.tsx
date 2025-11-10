@@ -7,34 +7,37 @@ import Image from 'next/image';
 
 export default function LoveStory() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const timeline = [
     {
-      year: "12:00 PM",
-      title: "Ceremonia Religiosa",
-      description: "Celebración de nuestra unión en matrimonio en la iglesia."
+      year: '13:45 PM',
+      title: 'Ceremonia Religiosa',
+      description: 'Celebración de nuestra unión en matrimonio en la iglesia.',
     },
     {
-      year: "2:00 PM",
-      title: "Recepción",
-      description: "Apertura de la celebración con un brindis de bienvenida."
+      year: '16:50 PM',
+      title: 'Boda civil',
+      description: 'Celebracion de nuestra boda civil en el salon de eventos.',
     },
     {
-      year: "3:00 PM",
-      title: "Almuerzo",
-      description: "Disfruta de un elegante menú especialmente preparado para la ocasión."
+      year: '17:30 PM',
+      title: 'Vals de los novios',
+      description: 'Baile de los novios,padres y padrinos.',
     },
     {
-      year: "4:30 PM",
-      title: "Baile y Celebración",
-      description: "Música, baile y diversión para celebrar nuestro amor."
-    }
+      year: '19:30 PM',
+      title: 'Cena',
+      description:
+        'Disfruta de un elegante menú especialmente preparado para la ocasión.',
+    },
   ];
 
-
   return (
-    <section ref={ref} className="py-12 sm:py-16 md:py-20 px-4 relative overflow-hidden -mb-1">
+    <section
+      ref={ref}
+      className="py-12 sm:py-16 md:py-20 px-4 relative overflow-hidden -mb-1"
+    >
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -47,7 +50,6 @@ export default function LoveStory() {
       </div>
       {/* Overlay con gradiente para transición suave */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/60 to-white/50 z-1"></div>
-      
 
       <div className="max-w-4xl mx-auto relative z-20">
         {/* Title */}
@@ -75,21 +77,29 @@ export default function LoveStory() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className={`relative flex items-center mb-8 sm:mb-12 ${
-                index % 2 === 0 
-                  ? 'flex-col sm:flex-row' 
+                index % 2 === 0
+                  ? 'flex-col sm:flex-row'
                   : 'flex-col sm:flex-row-reverse'
               }`}
             >
               {/* Content */}
-              <div className={`w-full sm:w-5/12 px-4 sm:px-0 ${
-                index % 2 === 0 
-                  ? 'text-center sm:text-right sm:pr-8' 
-                  : 'text-center sm:text-left sm:pl-8'
-              }`}>
+              <div
+                className={`w-full sm:w-5/12 px-4 sm:px-0 ${
+                  index % 2 === 0
+                    ? 'text-center sm:text-right sm:pr-8'
+                    : 'text-center sm:text-left sm:pl-8'
+                }`}
+              >
                 <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-neutral-100 sm:inline-block w-full sm:w-auto backdrop-blur-sm">
-                  <span className="text-[#722f37] font-semibold text-base sm:text-lg block">{event.year}</span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-neutral-800 my-2">{event.title}</h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">{event.description}</p>
+                  <span className="text-[#722f37] font-semibold text-base sm:text-lg block">
+                    {event.year}
+                  </span>
+                  <h3 className="font-serif text-xl sm:text-2xl text-neutral-800 my-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-neutral-600 text-sm leading-relaxed">
+                    {event.description}
+                  </p>
                 </div>
               </div>
 

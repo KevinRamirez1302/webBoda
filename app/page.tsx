@@ -8,10 +8,12 @@ import FloatingHearts from './components/floatingHeart';
 import GiftSection from './views/gift';
 import Bendicion from './views/bendicion';
 import BuenosDeseos from './views/buenosDeseos';
+import BackgroundMusic from './components/backgroundMusic';
 
 export default function Home() {
   return (
     <div className="relative w-full overflow-x-hidden bg-white dark:bg-white">
+      <BackgroundMusic />
       <FloatingHearts />
       <AperturaInvitacion>
         <div className="flex flex-col min-h-screen bg-white dark:bg-white text-gray-900 dark:text-gray-900">
