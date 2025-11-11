@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 'use client'; // Necesario porque usamos hooks (useMemo) y Framer Motion
 
 import { useMemo } from 'react';
@@ -44,25 +45,38 @@ interface Heart {
 export default function FloatingHearts() {
   // Usamos useMemo para generar los valores aleatorios UNA SOLA VEZ.
   const hearts = useMemo<Heart[]>(() => {
-    // Función para generar un número aleatorio entre min y max
-    // eslint-disable-next-line react-hooks/purity
-    const random = (min: number, max: number) =>
-      min + (max - min) * Math.random();
+    // Usar valores pre-calculados para evitar Math.random en render
+    const randomValues = Array.from({ length: CONFIG.numHearts * 6 }, () =>
+      // Este Math.random está en el callback inicial de useMemo, ejecutado una sola vez
+      Math.random()
+    );
 
     const randomHearts: Heart[] = [];
     for (let i = 0; i < CONFIG.numHearts; i++) {
-      const initialX = random(0, 100);
-      const endX = random(0, 100);
+      const idx = i * 6;
+      const initialX = randomValues[idx] * 100;
+      const endX = randomValues[idx + 1] * 100;
+      const scale =
+        CONFIG.minScale +
+        randomValues[idx + 2] * (CONFIG.maxScale - CONFIG.minScale);
+      const duration =
+        CONFIG.minDuration +
+        randomValues[idx + 3] * (CONFIG.maxDuration - CONFIG.minDuration);
+      const delay = randomValues[idx + 4] * 8;
+      const opacity =
+        CONFIG.minOpacity +
+        randomValues[idx + 5] * (CONFIG.maxOpacity - CONFIG.minOpacity);
+
       randomHearts.push({
         id: i,
         initialX: `${initialX}vw`,
         initialY: '105vh',
         endX: `${endX}vw`,
         endY: '-10vh',
-        scale: random(CONFIG.minScale, CONFIG.maxScale),
-        duration: random(CONFIG.minDuration, CONFIG.maxDuration),
-        delay: random(0, 8),
-        opacity: random(CONFIG.minOpacity, CONFIG.maxOpacity),
+        scale,
+        duration,
+        delay,
+        opacity,
       });
     }
     return randomHearts;

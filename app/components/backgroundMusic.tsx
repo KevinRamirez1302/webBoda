@@ -62,7 +62,7 @@ export default function BackgroundMusic() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
-        className="fixed top-6 right-6 z-[9999]"
+        className="fixed top-6 right-6 z-100"
       >
         <button
           onClick={toggleMusic}

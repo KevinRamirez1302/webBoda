@@ -95,99 +95,7 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
     }, 1800);
   };
 
-  // Variantes de Animación
-
-  // Solapa triangular superior - se abre hacia arriba y atrás
-  const topFlapVariants = {
-    cerrada: {
-      rotateX: 0,
-      z: 0,
-    },
-    abierta: {
-      rotateX: -180,
-      z: -100,
-      transition: {
-        duration: 1.4,
-        ease: [0.645, 0.045, 0.355, 1.0],
-        delay: 0.4,
-      },
-    },
-  };
-
-  // Solapa rectangular inferior - se desliza hacia abajo con profundidad
-  const bottomFlapVariants = {
-    cerrada: {
-      y: 0,
-      rotateX: 0,
-      z: 0,
-    },
-    abierta: {
-      y: '100%',
-      rotateX: 15,
-      z: -50,
-      transition: {
-        duration: 1.2,
-        ease: [0.645, 0.045, 0.355, 1.0],
-        delay: 0.2,
-      },
-    },
-  };
-
-  // Contenedor del sobre completo - se aleja ligeramente
-  const envelopeContainerVariants = {
-    cerrada: {
-      scale: 1,
-      z: 0,
-    },
-    abierta: {
-      scale: 0.95,
-      z: -200,
-      transition: {
-        duration: 1.5,
-        ease: [0.645, 0.045, 0.355, 1.0],
-      },
-    },
-  };
-
-  // Animación del sello - se rompe y desvanece
-  const ribbonVariants = {
-    cerrada: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-    },
-    abierta: {
-      opacity: 0,
-      scale: 0.3,
-      rotate: -45,
-      y: 50,
-      transition: {
-        duration: 0.5,
-        ease: 'easeIn',
-        delay: 0.1,
-      },
-    },
-  };
-
-  // Tarjeta interior - sale del sobre con efecto de elevación
-  const cardVariants = {
-    oculto: {
-      opacity: 0,
-      scale: 0.8,
-      y: 100,
-      z: -100,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      z: 0,
-      transition: {
-        duration: 1.0,
-        ease: [0.175, 0.885, 0.32, 1.275],
-      },
-    },
-  };
+  // Variantes de Animación (sin tipos específicos para evitar errores de Framer Motion)
 
   // Overlay que se desvanece completamente
   const overlayVariants = {
@@ -224,9 +132,9 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
         {estaAbierta && !mostrarContenido && (
           <motion.div
             className="absolute inset-0 flex items-center justify-center z-50"
-            variants={cardVariants}
-            initial="oculto"
-            animate="visible"
+            initial={{ opacity: 0, scale: 0.8, y: 100 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: [0.175, 0.885, 0.32, 1.275] }}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div className="bg-[#E5DDC9] p-8 md:p-16 rounded shadow-2xl max-w-2xl text-center">
@@ -243,10 +151,9 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
           <motion.div
             className="absolute inset-0 cursor-pointer flex items-center justify-center"
             onClick={abrirInvitacion}
-            variants={envelopeContainerVariants}
-            initial="cerrada"
-            animate="cerrada"
-            exit="abierta"
+            initial={{ scale: 1 }}
+            animate={estaAbierta ? { scale: 0.95 } : { scale: 1 }}
+            transition={{ duration: 1.5, ease: [0.645, 0.045, 0.355, 1.0] }}
             style={{ transformStyle: 'preserve-3d' }}
           >
             <div
@@ -255,9 +162,13 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
             >
               {/* Lazo y Sello */}
               <motion.div
-                variants={ribbonVariants}
-                initial="cerrada"
-                animate={estaAbierta ? 'abierta' : 'cerrada'}
+                initial={{ opacity: 1, scale: 1, rotate: 0 }}
+                animate={
+                  estaAbierta
+                    ? { opacity: 0, scale: 0.3, rotate: -45, y: 50 }
+                    : { opacity: 1, scale: 1, rotate: 0 }
+                }
+                transition={{ duration: 0.5, ease: 'easeIn', delay: 0.1 }}
               >
                 <Ribbon selloUrl={selloUrl} />
               </motion.div>
@@ -274,9 +185,13 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
                   border: '2px solid rgba(139,74,84,0.5)',
                   backfaceVisibility: 'hidden',
                 }}
-                variants={topFlapVariants}
-                initial="cerrada"
-                animate={estaAbierta ? 'abierta' : 'cerrada'}
+                initial={{ rotateX: 0 }}
+                animate={estaAbierta ? { rotateX: -180 } : { rotateX: 0 }}
+                transition={{
+                  duration: 1.4,
+                  ease: [0.645, 0.045, 0.355, 1.0],
+                  delay: 0.4,
+                }}
               />
 
               {/* Solapa Inferior Rectangular */}
@@ -289,9 +204,17 @@ export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
                     '0 -10px 30px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0,0,0,0.3)',
                   border: '2px solid rgba(139,74,84,0.5)',
                 }}
-                variants={bottomFlapVariants}
-                initial="cerrada"
-                animate={estaAbierta ? 'abierta' : 'cerrada'}
+                initial={{ y: 0, rotateX: 0 }}
+                animate={
+                  estaAbierta
+                    ? { y: '100%', rotateX: 15 }
+                    : { y: 0, rotateX: 0 }
+                }
+                transition={{
+                  duration: 1.2,
+                  ease: [0.645, 0.045, 0.355, 1.0],
+                  delay: 0.2,
+                }}
               />
 
               {/* Fondo del sobre */}
