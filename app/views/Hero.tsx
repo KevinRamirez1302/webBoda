@@ -30,7 +30,7 @@ export default function HeroSection() {
       </div>
 
       {/* Overlay oscuro para resaltar el texto */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50 z-10"></div>
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/40 to-black/50 z-10"></div>
 
       <div className="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col justify-end md:justify-center min-h-screen pb-24 md:pb-0">
         {/* Animated ornament top */}

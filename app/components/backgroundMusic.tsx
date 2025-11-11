@@ -19,7 +19,7 @@ export default function BackgroundMusic() {
       try {
         await audioRef.current?.play();
         setIsPlaying(true);
-      } catch (error) {
+      } catch {
         console.log(
           'Autoplay bloqueado, el usuario debe hacer clic para activar la música'
         );

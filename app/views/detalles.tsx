@@ -12,9 +12,12 @@ export default function EventDetails() {
   const events = [
     {
       icon: (
-        <img
-          src="images/iglesia.webp"
-          className=" min-h-[150px] w-[150px] h-[150px] min-w-[150px] "
+        <Image
+          src="/images/iglesia.webp"
+          alt="Iglesia"
+          width={150}
+          height={150}
+          className="min-h-[150px] w-[150px] h-[150px] min-w-[150px]"
         />
       ),
       title: 'Iglesia Basílica María Auxiliadora',
@@ -26,9 +29,12 @@ export default function EventDetails() {
     },
     {
       icon: (
-        <img
-          src="images/bodaRecepcion.webp"
-          className=" min-h-[150px] w-[150px] h-[150px] min-w-[150px] "
+        <Image
+          src="/images/bodaRecepcion.webp"
+          alt="Recepción"
+          width={150}
+          height={150}
+          className="min-h-[150px] w-[150px] h-[150px] min-w-[150px]"
         />
       ),
       title: 'Recepción',

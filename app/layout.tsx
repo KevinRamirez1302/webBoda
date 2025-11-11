@@ -14,7 +14,27 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Gonzalo & Xiomara - Nuestra Boda',
-  description: 'Boda de Gonzalo y Xiomara - 10 de Enero de 2026',
+  description:
+    'Celebra con nosotros nuestra boda el 10 de Enero de 2026. Únete a nuestra celebración de amor.',
+  keywords: [
+    'boda',
+    'matrimonio',
+    'Gonzalo',
+    'Xiomara',
+    'celebración',
+    'invitación',
+  ],
+  authors: [{ name: 'Gonzalo & Xiomara' }],
+  openGraph: {
+    title: 'Gonzalo & Xiomara - Nuestra Boda',
+    description: 'Celebra con nosotros nuestra boda el 10 de Enero de 2026',
+    type: 'website',
+    locale: 'es_ES',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -42,11 +42,12 @@ interface Heart {
 }
 
 export default function FloatingHearts() {
-  // Función para generar un número aleatorio entre min y max
-  const random = (min: number, max: number) => min + (max - min) * Math.random();
-
   // Usamos useMemo para generar los valores aleatorios UNA SOLA VEZ.
   const hearts = useMemo<Heart[]>(() => {
+    // Función para generar un número aleatorio entre min y max
+    // eslint-disable-next-line react-hooks/purity
+    const random = (min: number, max: number) => min + (max - min) * Math.random();
+    
     const randomHearts: Heart[] = [];
     for (let i = 0; i < CONFIG.numHearts; i++) {
       const initialX = random(0, 100);

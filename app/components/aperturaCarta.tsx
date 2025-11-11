@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 type Props = {
   children: React.ReactNode;
@@ -12,37 +13,56 @@ type Props = {
 };
 
 // Componente del Lazo Horizontal con Sello de Cera
-const Ribbon = ({ selloUrl, ...props }: { selloUrl?: string; [key: string]: any }) => (
+const Ribbon = ({
+  selloUrl,
+  ...props
+}: {
+  selloUrl?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}) => (
   <motion.div
     className="absolute w-full h-24 md:h-32 flex items-center justify-center pointer-events-none z-40"
     {...props}
     style={{ top: '50%', transform: 'translateY(-50%)' }}
   >
     {/* Lazo horizontal - parte izquierda */}
-    <div className="absolute left-0 w-1/2 h-8 md:h-10 bg-gradient-to-r from-transparent via-[#C9B799] to-[#8B7355] opacity-90" 
-         style={{ boxShadow: '0 2px 8px rgba(139,115,85,0.4)' }} />
-    
+    <div
+      className="absolute left-0 w-1/2 h-8 md:h-10 bg-linear-to-r from-transparent via-[#C9B799] to-[#8B7355] opacity-90"
+      style={{ boxShadow: '0 2px 8px rgba(139,115,85,0.4)' }}
+    />
+
     {/* Lazo horizontal - parte derecha */}
-    <div className="absolute right-0 w-1/2 h-8 md:h-10 bg-gradient-to-l from-transparent via-[#C9B799] to-[#8B7355] opacity-90"
-         style={{ boxShadow: '0 2px 8px rgba(139,115,85,0.4)' }} />
-    
+    <div
+      className="absolute right-0 w-1/2 h-8 md:h-10 bg-linear-to-l from-transparent via-[#C9B799] to-[#8B7355] opacity-90"
+      style={{ boxShadow: '0 2px 8px rgba(139,115,85,0.4)' }}
+    />
+
     {/* Sello de cera con imagen */}
-    <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-[#6D2932] via-[#8B4A54] to-[#4A1F26] flex items-center justify-center shadow-2xl z-50 overflow-hidden"
-         style={{ 
-           boxShadow: '0 8px 20px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.15)',
-         }}>
+    <div
+      className="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-linear-to-br from-[#6D2932] via-[#8B4A54] to-[#4A1F26] flex items-center justify-center shadow-2xl z-50 overflow-hidden"
+      style={{
+        boxShadow:
+          '0 8px 20px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.15)',
+      }}
+    >
       {/* Textura del sello */}
-      <div className="absolute inset-0 rounded-full opacity-20"
-           style={{
-             background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 50%)',
-           }} />
-      
+      <div
+        className="absolute inset-0 rounded-full opacity-20"
+        style={{
+          background:
+            'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 50%)',
+        }}
+      />
+
       {/* Imagen del sello */}
       {selloUrl ? (
-        <img 
-          src={selloUrl} 
-          alt="Sello" 
-          className="relative w-20 h-20 md:w-28 md:h-28 object-contain z-10 brightness-150"
+        <Image
+          src={selloUrl}
+          alt="Sello"
+          width={112}
+          height={112}
+          className="relative object-contain z-10 brightness-150"
         />
       ) : (
         /* Diseño decorativo de boda por defecto */
@@ -57,16 +77,10 @@ const Ribbon = ({ selloUrl, ...props }: { selloUrl?: string; [key: string]: any 
         </div>
       )}
     </div>
-    
-
   </motion.div>
 );
 
-export const AperturaInvitacion = ({
-  children,
-  selloUrl,
-  onOpen,
-}: Props) => {
+export const AperturaInvitacion = ({ children, selloUrl, onOpen }: Props) => {
   const [estaAbierta, setEstaAbierta] = useState(false);
   const [mostrarContenido, setMostrarContenido] = useState(false);
 
@@ -85,16 +99,16 @@ export const AperturaInvitacion = ({
 
   // Solapa triangular superior - se abre hacia arriba y atrás
   const topFlapVariants = {
-    cerrada: { 
+    cerrada: {
       rotateX: 0,
       z: 0,
     },
     abierta: {
       rotateX: -180,
       z: -100,
-      transition: { 
-        duration: 1.4, 
-        ease: [0.645, 0.045, 0.355, 1.000],
+      transition: {
+        duration: 1.4,
+        ease: [0.645, 0.045, 0.355, 1.0],
         delay: 0.4,
       },
     },
@@ -102,7 +116,7 @@ export const AperturaInvitacion = ({
 
   // Solapa rectangular inferior - se desliza hacia abajo con profundidad
   const bottomFlapVariants = {
-    cerrada: { 
+    cerrada: {
       y: 0,
       rotateX: 0,
       z: 0,
@@ -111,9 +125,9 @@ export const AperturaInvitacion = ({
       y: '100%',
       rotateX: 15,
       z: -50,
-      transition: { 
-        duration: 1.2, 
-        ease: [0.645, 0.045, 0.355, 1.000],
+      transition: {
+        duration: 1.2,
+        ease: [0.645, 0.045, 0.355, 1.0],
         delay: 0.2,
       },
     },
@@ -130,35 +144,35 @@ export const AperturaInvitacion = ({
       z: -200,
       transition: {
         duration: 1.5,
-        ease: [0.645, 0.045, 0.355, 1.000],
+        ease: [0.645, 0.045, 0.355, 1.0],
       },
     },
   };
 
   // Animación del sello - se rompe y desvanece
   const ribbonVariants = {
-    cerrada: { 
-      opacity: 1, 
+    cerrada: {
+      opacity: 1,
       scale: 1,
       rotate: 0,
     },
-    abierta: { 
-      opacity: 0, 
+    abierta: {
+      opacity: 0,
       scale: 0.3,
       rotate: -45,
       y: 50,
-      transition: { 
-        duration: 0.5, 
+      transition: {
+        duration: 0.5,
         ease: 'easeIn',
         delay: 0.1,
-      } 
+      },
     },
   };
 
   // Tarjeta interior - sale del sobre con efecto de elevación
   const cardVariants = {
-    oculto: { 
-      opacity: 0, 
+    oculto: {
+      opacity: 0,
       scale: 0.8,
       y: 100,
       z: -100,
@@ -168,9 +182,9 @@ export const AperturaInvitacion = ({
       scale: 1,
       y: 0,
       z: 0,
-      transition: { 
-        duration: 1.0, 
-        ease: [0.175, 0.885, 0.320, 1.275],
+      transition: {
+        duration: 1.0,
+        ease: [0.175, 0.885, 0.32, 1.275],
       },
     },
   };
@@ -193,20 +207,18 @@ export const AperturaInvitacion = ({
   return (
     <>
       {/* Contenido principal de la web - siempre renderizado */}
-      <div className={mostrarContenido ? 'block' : 'hidden'}>
-        {children}
-      </div>
+      <div className={mostrarContenido ? 'block' : 'hidden'}>{children}</div>
 
       {/* Overlay del sobre - desaparece después de abrir */}
       <motion.div
-        className="fixed inset-0 z-[9999] flex items-center justify-center"
+        className="fixed inset-0 z-100 flex items-center justify-center"
         style={{ perspective: '2000px' }}
         variants={overlayVariants}
         initial="visible"
-        animate={mostrarContenido ? "oculto" : "visible"}
+        animate={mostrarContenido ? 'oculto' : 'visible'}
       >
         {/* Fondo oscuro */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2A1A1F] via-[#1A0F13] to-[#0F0A0C]" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#2A1A1F] via-[#1A0F13] to-[#0F0A0C]" />
 
         {/* Tarjeta que sale del sobre */}
         {estaAbierta && !mostrarContenido && (
@@ -221,9 +233,7 @@ export const AperturaInvitacion = ({
               <h2 className="text-2xl md:text-4xl font-serif text-[#6D2932] mb-4">
                 Bienvenidos
               </h2>
-              <p className="text-[#8B7355] text-lg">
-                Cargando...
-              </p>
+              <p className="text-[#8B7355] text-lg">Cargando...</p>
             </div>
           </motion.div>
         )}
@@ -239,70 +249,80 @@ export const AperturaInvitacion = ({
             exit="abierta"
             style={{ transformStyle: 'preserve-3d' }}
           >
-            <div className="relative w-full max-w-2xl aspect-[3/2]">
+            <div
+              className="relative w-full max-w-2xl"
+              style={{ aspectRatio: '3/2' }}
+            >
               {/* Lazo y Sello */}
               <motion.div
                 variants={ribbonVariants}
                 initial="cerrada"
-                animate={estaAbierta ? "abierta" : "cerrada"}
+                animate={estaAbierta ? 'abierta' : 'cerrada'}
               >
                 <Ribbon selloUrl={selloUrl} />
               </motion.div>
 
               {/* Solapa Superior Triangular */}
               <motion.div
-                className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[#6D2932] via-[#8B4A54] to-[#5A2429] origin-top z-30"
+                className="absolute top-0 left-0 w-full h-1/2 bg-linear-to-br from-[#6D2932] via-[#8B4A54] to-[#5A2429] origin-top z-30"
                 style={{
                   clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
                   transformOrigin: 'top center',
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 -2px 10px rgba(0,0,0,0.3)',
+                  boxShadow:
+                    '0 10px 30px rgba(0,0,0,0.4), inset 0 -2px 10px rgba(0,0,0,0.3)',
                   border: '2px solid rgba(139,74,84,0.5)',
                   backfaceVisibility: 'hidden',
                 }}
                 variants={topFlapVariants}
                 initial="cerrada"
-                animate={estaAbierta ? "abierta" : "cerrada"}
+                animate={estaAbierta ? 'abierta' : 'cerrada'}
               />
-              
+
               {/* Solapa Inferior Rectangular */}
               <motion.div
-                className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#6D2932] via-[#8B4A54] to-[#5A2429] origin-bottom z-20"
+                className="absolute bottom-0 left-0 w-full h-1/2 bg-linear-to-t from-[#6D2932] via-[#8B4A54] to-[#5A2429] origin-bottom z-20"
                 style={{
                   transformOrigin: 'bottom center',
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 -10px 30px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0,0,0,0.3)',
+                  boxShadow:
+                    '0 -10px 30px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0,0,0,0.3)',
                   border: '2px solid rgba(139,74,84,0.5)',
                 }}
                 variants={bottomFlapVariants}
                 initial="cerrada"
-                animate={estaAbierta ? "abierta" : "cerrada"}
+                animate={estaAbierta ? 'abierta' : 'cerrada'}
               />
 
               {/* Fondo del sobre */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6D2932] via-[#8B4A54] to-[#5A2429] z-10"
-                   style={{ 
-                     boxShadow: 'inset 0 0 60px rgba(0,0,0,0.3), 0 20px 60px rgba(0,0,0,0.5)',
-                     border: '2px solid rgba(139,74,84,0.5)',
-                   }}></div>
+              <div
+                className="absolute inset-0 bg-linear-to-br from-[#6D2932] via-[#8B4A54] to-[#5A2429] z-10"
+                style={{
+                  boxShadow:
+                    'inset 0 0 60px rgba(0,0,0,0.3), 0 20px 60px rgba(0,0,0,0.5)',
+                  border: '2px solid rgba(139,74,84,0.5)',
+                }}
+              ></div>
 
               {/* Interior del sobre con detalles beige */}
-              <div className="absolute inset-0 bg-gradient-to-b from-[#E5DDC9] to-[#C9B799] z-0"
-                   style={{
-                     boxShadow: 'inset 0 10px 30px rgba(0,0,0,0.15)',
-                   }}></div>
+              <div
+                className="absolute inset-0 bg-linear-to-b from-[#E5DDC9] to-[#C9B799] z-0"
+                style={{
+                  boxShadow: 'inset 0 10px 30px rgba(0,0,0,0.15)',
+                }}
+              ></div>
 
               {/* Texto decorativo animado */}
-              <motion.div 
-                className="absolute bottom-[-80px] left-0 right-0 flex flex-col items-center justify-center z-15 pointer-events-none"
+              <motion.div
+                className="absolute -bottom-20 left-0 right-0 flex flex-col items-center justify-center z-15 pointer-events-none"
                 animate={{
                   opacity: [0.6, 1, 0.6],
-                  y: [-2, 2, -2]
+                  y: [-2, 2, -2],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: 'easeInOut',
                 }}
               >
                 <div className="text-[#E5DDC9] text-center">
@@ -311,12 +331,12 @@ export const AperturaInvitacion = ({
                   </p>
                   <motion.div
                     animate={{
-                      y: [0, 4, 0]
+                      y: [0, 4, 0],
                     }}
                     transition={{
                       duration: 1.5,
                       repeat: Infinity,
-                      ease: "easeInOut"
+                      ease: 'easeInOut',
                     }}
                   >
                     ↑

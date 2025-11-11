@@ -68,7 +68,7 @@ export default function Bendicion() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="w-24 h-px bg-gradient-to-r from-transparent via-[#722f37] to-transparent mx-auto mb-8"
+            className="w-24 h-px bg-linear-to-r from-transparent via-[#722f37] to-transparent mx-auto mb-8"
           ></motion.div>
 
           {/* Padres del novio */}
@@ -94,7 +94,7 @@ export default function Bendicion() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9B799] to-transparent mx-auto my-8"
+            className="w-16 h-px bg-linear-to-r from-transparent via-[#C9B799] to-transparent mx-auto my-8"
           ></motion.div>
 
           {/* Padres de la novia */}
@@ -120,7 +120,7 @@ export default function Bendicion() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="w-24 h-px bg-gradient-to-r from-transparent via-[#722f37] to-transparent mx-auto my-8"
+            className="w-24 h-px bg-linear-to-r from-transparent via-[#722f37] to-transparent mx-auto my-8"
           ></motion.div>
 
           {/* Footer message */}

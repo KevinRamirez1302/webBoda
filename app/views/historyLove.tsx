@@ -65,7 +65,7 @@ export default function LoveStory() {
         />
       </div>
       {/* Overlay con gradiente para transición suave */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/60 to-white/50 z-1"></div>
+      <div className="absolute inset-0 bg-linear-to-b from-white/60 via-white/60 to-white/50 z-1"></div>
 
       <div className="max-w-4xl mx-auto relative z-20">
         {/* Title */}

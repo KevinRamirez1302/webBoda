@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import {
   Heart,
@@ -20,11 +19,9 @@ interface Message {
 
 export default function BuenosDeseos() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [messages, setMessages] = useState<Message[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'carousel' | 'grid'>('carousel');
 
   // Fetch mensajes de la API
@@ -59,7 +56,7 @@ export default function BuenosDeseos() {
           messagesArray = data.messages;
         }
 
-        const messagesWithContent = messagesArray.filter((msg: any) => {
+        const messagesWithContent = messagesArray.filter((msg: Message) => {
           return msg.mensaje && msg.mensaje.trim() !== '';
         });
 
@@ -99,11 +96,8 @@ export default function BuenosDeseos() {
         } else {
           setMessages(messagesWithContent);
         }
-
-        setError(null);
       } catch (err) {
         console.error('Error fetching messages:', err);
-        setError('No se pudieron cargar los mensajes');
         setMessages([
           {
             id: 1,
@@ -159,7 +153,7 @@ export default function BuenosDeseos() {
 
   if (isLoading) {
     return (
-      <section className="py-16 sm:py-20 md:py-24 px-4 bg-gradient-to-b from-white via-rose-50/30 to-white">
+      <section className="py-16 sm:py-20 md:py-24 px-4 bg-linear-to-b from-white via-rose-50/30 to-white">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-pulse">
             <div className="h-8 bg-rose-200 rounded w-64 mx-auto mb-8"></div>
@@ -173,7 +167,7 @@ export default function BuenosDeseos() {
   return (
     <section
       ref={ref}
-      className="px-[7%] py-20 bg-gradient-to-b from-white via-rose-50/30 to-white overflow-hidden"
+      className="px-[7%] py-20 bg-linear-to-b from-white via-rose-50/30 to-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -226,7 +220,7 @@ export default function BuenosDeseos() {
                   transition={{ duration: 0.5 }}
                   className="absolute inset-0"
                 >
-                  <div className="h-full rounded-2xl p-8 md:p-12 bg-gradient-to-br from-[#722f37] to-[#5a2529] shadow-2xl flex flex-col justify-between">
+                  <div className="h-full rounded-2xl p-8 md:p-12 bg-linear-to-br from-[#722f37] to-[#5a2529] shadow-2xl flex flex-col justify-between">
                     {/* Heart Icon */}
                     <div className="flex justify-center mb-6">
                       <div className="bg-white/20 p-4 rounded-full">
@@ -237,7 +231,7 @@ export default function BuenosDeseos() {
                     {/* Message */}
                     <div className="flex-1 flex items-center justify-center">
                       <p className="text-white text-lg md:text-xl leading-relaxed text-center italic max-w-2xl">
-                        "{messages[currentIndex].mensaje}"
+                        &ldquo;{messages[currentIndex].mensaje}&rdquo;
                       </p>
                     </div>
 
@@ -309,14 +303,14 @@ export default function BuenosDeseos() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="rounded-xl p-6 bg-gradient-to-br from-[#722f37] to-[#5a2529] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-56"
+                className="rounded-xl p-6 bg-linear-to-br from-[#722f37] to-[#5a2529] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-56"
               >
                 <div className="flex flex-col gap-3 h-full">
                   <p className="text-gray-100 leading-relaxed text-sm flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
                     {data.mensaje}
                   </p>
                   <div className="flex items-center gap-2 pt-2 border-t border-white/20">
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
                       <span className="text-sm font-semibold">
                         {data.nombre_completo?.charAt(0).toUpperCase()}
                       </span>
