@@ -20,7 +20,7 @@ export default function HeroSection() {
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero.jpg"
+          src="/images/hero3.jpg"
           alt="Fondo de boda"
           fill
           priority
@@ -32,19 +32,19 @@ export default function HeroSection() {
       {/* Overlay oscuro para resaltar el texto */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50 z-10"></div>
 
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col justify-end md:justify-center min-h-screen pb-24 md:pb-0">
         {/* Animated ornament top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="mb-8"
+          className="mb-4 md:mb-8"
         >
           <svg
-            width="80"
-            height="80"
+            width="60"
+            height="60"
             viewBox="0 0 80 80"
-            className="mx-auto text-[#722f37]"
+            className="mx-auto text-[#722f37] md:w-20 md:h-20"
             fill="currentColor"
           >
             <path d="M40 10 L45 25 L60 30 L45 35 L40 50 L35 35 L20 30 L35 25 Z" />
@@ -56,14 +56,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mb-8"
+          className="mb-4 md:mb-8"
         >
           <h1
-            className={`${monsieur.className} text-6xl md:text-8xl text-white mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold`}
+            className={`${monsieur.className} text-5xl md:text-8xl text-white mb-3 md:mb-4 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] font-bold`}
           >
             Gonzalo & Xiomara
           </h1>
-          <div className="flex items-center justify-center gap-4 text-3xl md:text-6xl text-white">
+          <div className="flex items-center justify-center gap-4 text-2xl md:text-6xl text-white">
             <span
               className={`${satisfy.className} font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]`}
             >
@@ -77,10 +77,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mb-8"
+          className="mb-4 md:mb-8"
         >
           <p
-            className={` ${satisfy.className} text-2xl md:text-3xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider`}
+            className={` ${satisfy.className} text-xl md:text-3xl text-white font-normal drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wider`}
           >
             10 de Enero, 2026
           </p>
