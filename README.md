@@ -84,6 +84,7 @@ boda/
 ### Colores
 
 Los colores principales se encuentran en las clases de Tailwind:
+
 - Burgundy principal: `#722f37`
 - Burgundy oscuro: `#800020`
 - Beige claro: `#E5DDC9`
@@ -100,6 +101,7 @@ Los colores principales se encuentran en las clases de Tailwind:
 ### Imágenes
 
 Coloca tus imágenes en `/public/images/`:
+
 - `hero3.jpg` - Foto principal
 - `background.jpg` - Fondo del cronograma
 - `iglesia.webp` - Icono de iglesia
