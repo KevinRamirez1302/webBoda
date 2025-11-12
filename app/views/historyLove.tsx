@@ -42,7 +42,7 @@ export default function LoveStory() {
       imageUrl: '/images/cake.png',
     },
     {
-      year: '19:30 PM',
+      year: '00:00 AM',
       title: 'Despedida de la Feliz Pareja',
       description: '',
       imageUrl: '/images/adios.png',
