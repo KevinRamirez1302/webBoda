@@ -6,16 +6,15 @@ import { useRef, useState, useEffect } from 'react';
 
 export default function Countdown() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
-  // Set your wedding date here (year, month-1, day, hour, minute)
- const weddingDate = new Date(2026, 1, 10, 14, 0, 0).getTime();
-  
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const weddingDate = new Date(2026, 0, 11, 13, 45, 0).getTime();
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -26,9 +25,11 @@ export default function Countdown() {
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       }
     };
@@ -43,11 +44,14 @@ export default function Countdown() {
     { value: timeLeft.days, label: 'Días' },
     { value: timeLeft.hours, label: 'Horas' },
     { value: timeLeft.minutes, label: 'Minutos' },
-    { value: timeLeft.seconds, label: 'Segundos' }
+    { value: timeLeft.seconds, label: 'Segundos' },
   ];
 
   return (
-    <section ref={ref} className="py-20 px-4 bg-[#722f37] relative overflow-hidden">
+    <section
+      ref={ref}
+      className="py-20 px-4 bg-[#722f37] relative overflow-hidden"
+    >
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
